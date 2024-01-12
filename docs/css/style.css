@@ -1,0 +1,128 @@
+/* 使用prefer color scheme判断系统是否处于深色模式 */
+@media (prefers-color-scheme: dark){
+    /* 设置背景 */
+    body {
+        background-color: #222222;
+    }
+    h2 {
+        color: #FFFFFF;
+        font-size: 50px;
+    }
+    h3 {
+        color:#FFFFFF;
+        font-size: 25px;
+    }
+}
+@media (prefers-color-scheme: light){
+    body{
+        background-color: #DDDDDD;
+    }
+    /* 为h1设置样式 */
+    h2 {
+        color: #000000;
+        font-size: 50px;
+    }
+    h3 {
+        color:#000000;
+        font-size: 25px;
+    }
+}
+
+@font-face {
+    font-family: '字魂创粗黑';
+    src: url('font/字魂创粗黑.ttf');
+}
+
+/* 设置字体 */
+body{
+    font-family: '字魂创粗黑';
+}
+
+/* 为h1设置样式 */
+h1 {
+    color: #D64249;
+    font-size: 140px;
+}
+.text_zh_1 {
+    margin: 100px 0 0 100px;
+}
+.text_zh_2 {
+    margin: 0 0 0 300px;
+}
+.text_zh_3 {
+    margin: -65px 0 0 500px;
+}
+.text_zh_4 {
+    margin: -65px 0 0 730px;
+}
+.text_zh_5 {
+    margin: -65px 0 0 960px;
+}
+.text_zh_6 {
+    margin: -65px 0 0 1200px;
+}
+.text_en_1 {
+    margin: 0 0 0 300px;
+}
+.text_en_2 {
+    margin: 0px 0 0 300px;
+}
+.text_en_3 {
+    margin: -33px 0 0 360px;
+}
+.text_en_4 {
+    margin: -33px 0 0 420px;
+}
+.text_en_5 {
+    margin: -33px 0 0 480px;
+}
+.text_en_6 {
+    margin: -33px 0 0 540px;
+}
+
+/* 新建一条竖线，并设置颜色和样式 */
+.line{
+    width: 4px;
+    height: 130px;
+    background-color: #D64249;
+    margin: -130 0 0 293px;
+}
+/* 设置时间文本的样式 */
+.time_day_h1 {
+    margin: -230px 0 0 405px;
+}
+
+.time_hour_h1 {
+    margin: -185px 0 0 550px;
+}
+
+.time_min_h1 {
+    margin: -185px 0 0 780px;
+}
+.time_sec_h1 {
+    margin: -185px 0 0 1010px;
+}
+
+.time_day_h3 {
+    margin: 12px 0 0 340px;
+}
+.time_hour_h3 {
+    margin: -33px 0 0 385px;
+}
+.time_min_h3 {
+    margin: -33px 0 0 445px;
+}
+.time_sec_h3 {
+    margin: -33px 0 0 505px;
+}
+
+
+/* fontnote，将其放置到底部，并居中显示 */
+.fontnote {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 15px;
+    color: #FFFFFF;
+}
