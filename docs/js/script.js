@@ -6,7 +6,7 @@ function getTargetTime(){
 
     // 获取目标时间的日期
     var targetTime = new Date();
-    targetTime.setDate(targetTime.getDate() + (3 - targetTime.getDay()) % 7 + 1);
+    targetTime.setDate(targetTime.getDate() + (4 - targetTime.getDay()) % 7 + 1);
 
     if (now.getTime() > targetTime.getTime()) {
         targetTime.setDate(targetTime.getDate() + 7);
@@ -60,12 +60,11 @@ var timer = setInterval(function(){
 
     console.log("day: " + day + " hour: " + hour + " minute: " + minute + " second: " + second);
 
-    document.querySelector(".time_day_h1").innerHTML = day;
-    document.querySelector(".time_day_h3").innerHTML = day;
-    document.querySelector(".time_hour_h1").innerHTML = hour;
-    document.querySelector(".time_hour_h3").innerHTML = hour;
-    document.querySelector(".time_min_h1").innerHTML = minute;
-    document.querySelector(".time_min_h3").innerHTML = minute;
-    document.querySelector(".time_sec_h1").innerHTML = second;
-    document.querySelector(".time_sec_h3").innerHTML = second;
+    total_second = time;
+
+    document.querySelector(".time-day").innerHTML = day;
+    document.querySelector(".time-hour").innerHTML = hour;
+    document.querySelector(".time-min").innerHTML = minute;
+    document.querySelector(".time-sec").innerHTML = second;
+    document.querySelector(".time-sec-h3").innerHTML = total_second;
 },1000);
