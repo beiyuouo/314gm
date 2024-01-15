@@ -9,11 +9,13 @@ function getParameterByName(name) {
 var customDate = getParameterByName('date');
 var customEventZh = "距离" + (getParameterByName('event-zh') || "下次组会");
 var customEventEn = getParameterByName('event-en') || "NEXT GROUP MEETING";
+var customTheme = getParameterByName('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light");
 
 function customize() {
     console.log("customDate: " + customDate);
     console.log("customEventZh: " + customEventZh);
     console.log("customEventEn: " + customEventEn);
+    console.log("customTheme: " + customTheme);
 
     var eventZh = document.querySelectorAll(".event-zh");
     var eventEn = document.querySelectorAll(".event-en");
@@ -31,13 +33,17 @@ function customize() {
     }
     );
 
+    if (customTheme == "white" || customTheme == "light") {
+        document.body.style.backgroundColor = "#eeeeee";
+        document.body.style.color = "#222222";
+    } else {
+        document.body.style.backgroundColor = "#222222";
+        document.body.style.color = "#eeeeee";
+    }
+
 }
 
 // customize();
-
-console.log(customDate);
-console.log(customEventZh);
-console.log(customEventEn);
 
 // 目标时间为从现在起下一个周四的上午9：30
 function getTargetTime() {
