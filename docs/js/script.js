@@ -1,22 +1,73 @@
-// 目标时间为从现在起下一个周四的上午9：30
 
-function getTargetTime(){
+// 从URL中获取参数    
+function getParameterByName(name) {
+    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+
+// 获取日期参数  
+var customDate = getParameterByName('date');
+var customEventZh = "距离" + (getParameterByName('event-zh') || "下次组会");
+var customEventEn = getParameterByName('event-en') || "NEXT GROUP MEETING";
+
+function customize() {
+    console.log("customDate: " + customDate);
+    console.log("customEventZh: " + customEventZh);
+    console.log("customEventEn: " + customEventEn);
+
+    var eventZh = document.querySelectorAll(".event-zh");
+    var eventEn = document.querySelectorAll(".event-en");
+
+    console.log(eventZh);
+    console.log(eventEn);
+
+    eventZh.forEach(el => {
+        el.innerHTML = customEventZh;
+    }
+    );
+
+    eventEn.forEach(el => {
+        el.innerHTML = customEventEn;
+    }
+    );
+
+}
+
+// customize();
+
+console.log(customDate);
+console.log(customEventZh);
+console.log(customEventEn);
+
+// 目标时间为从现在起下一个周四的上午9：30
+function getTargetTime() {
     // 获取当前时间
     var now = new Date();
 
     // 获取目标时间的日期
-    var targetTime = new Date();
-    targetTime.setDate(targetTime.getDate() + (3 - targetTime.getDay()) % 7 + 1);
+    if (customDate) {
+        var targetTime = new Date(customDate);
 
-    if (now.getTime() > targetTime.getTime()) {
-        targetTime.setDate(targetTime.getDate() + 7);
+        // 检测是否设置了时间
+        if (customDate.length <= 10) {
+            targetTime.setHours(9);
+            targetTime.setMinutes(30);
+            targetTime.setSeconds(0);
+            targetTime.setMilliseconds(0);
+        }
+    } else {
+        var targetTime = new Date();
+        targetTime.setDate(targetTime.getDate() + (3 - targetTime.getDay()) % 7 + 1);
+
+        if (now.getTime() > targetTime.getTime()) {
+            targetTime.setDate(targetTime.getDate() + 7);
+        }
+
+        targetTime.setHours(9);
+        targetTime.setMinutes(30);
+        targetTime.setSeconds(0);
+        targetTime.setMilliseconds(0);
     }
-
-    targetTime.setHours(9);
-    targetTime.setMinutes(30);
-    targetTime.setSeconds(0);
-    targetTime.setMilliseconds(0);
-
     return targetTime;
 }
 
@@ -29,12 +80,12 @@ console.log(timeDiff);
 console.log(time);
 
 // 设置一个定时器，每秒执行一次
-var timer = setInterval(function(){
+var timer = setInterval(function () {
     // 每次减一
     time--;
     console.log(time);
     // 如果时间小于等于0，就停止计时，并重置到下周四
-    if(time <= 0){
+    if (time <= 0) {
         clearInterval(timer);
         // 重置
         targetTime = getTargetTime();
@@ -54,9 +105,9 @@ var timer = setInterval(function(){
     var second = parseInt(time % 86400 % 3600 % 60);
 
     // 前导零
-    hour = hour < 10 ? "0" + hour : hour;
-    minute = minute < 10 ? "0" + minute : minute;
-    second = second < 10 ? "0" + second : second;
+    hour = hour < 10 && hour >= 0 ? "0" + hour : hour;
+    minute = minute < 10 && minute >= 0 ? "0" + minute : minute;
+    second = second < 10 && second >= 0 ? "0" + second : second;
 
     console.log("day: " + day + " hour: " + hour + " minute: " + minute + " second: " + second);
 
@@ -75,9 +126,11 @@ var timer = setInterval(function(){
 // 初始化字体大小
 adjustFontSize();
 
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("DOMContentLoaded", function (event) {
     // 初始化字体大小
+    customize();
     adjustFontSize();
+
 });
 
 // 当窗口大小改变时
@@ -109,4 +162,3 @@ function adjustFontSize() {
 
     console.log('width: ' + width + ' fs1: ' + fs1 + ' fs2: ' + fs2 + ' fs3: ' + fs3);
 }
-

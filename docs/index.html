@@ -16,11 +16,24 @@
             font-family: '字魂创粗黑';
             src: url('font/字魂创粗黑.ttf');
         } */
+        @media (prefers-color-scheme: dark){
+            /* 设置背景 */
+            .mbody {
+                background-color: #222222;
+                color: #DDDDDD;
+            }
+        }
+        @media (prefers-color-scheme: light){
+            .mbody {
+                background-color: #DDDDDD;
+                color: #222222;
+            }
+        }
 
         .mbody {
             font-family: '字魂创粗黑', '微软雅黑', 'Microsoft YaHei', '黑体', '宋体', sans-serif;
-            background-color: #222222;
-            color: #FFFFFF;
+            /* background-color: #222222; */
+            /* color: #FFFFFF; */
         }
 
         .fontnote {
@@ -88,7 +101,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="text-align-left">
-                    <p class="mfs-1">距离下次组会</p>
+                    <p class="mfs-1 event-zh">距离下次组会</p>
                 </div>
             </div>
         </div>
@@ -117,7 +130,7 @@
                 
                 <div class="row">
                     <div class="col-12 col-sm-12">
-                        <p class="mfs-3">NEXT GROUP MEETING</p>
+                        <p class="mfs-3 event-en">NEXT GROUP MEETING</p>
                     </div>
                 </div>
 
