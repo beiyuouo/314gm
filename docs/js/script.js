@@ -67,4 +67,46 @@ var timer = setInterval(function(){
     document.querySelector(".time-min").innerHTML = minute;
     document.querySelector(".time-sec").innerHTML = second;
     document.querySelector(".time-sec-h3").innerHTML = total_second;
-},1000);
+}, 1000);
+
+
+
+
+// 初始化字体大小
+adjustFontSize();
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    // 初始化字体大小
+    adjustFontSize();
+});
+
+// 当窗口大小改变时
+window.addEventListener('resize', adjustFontSize);
+
+function adjustFontSize() {
+    // Dynamically adjust font size
+    // 获取窗口宽度
+    var width = window.innerWidth;
+    // 获取相关元素
+    var mfs1Els = document.querySelectorAll('.mfs-1');
+    var mfs2Els = document.querySelectorAll('.mfs-2');
+    var mfs3Els = document.querySelectorAll('.mfs-3');
+
+    fs1 = 120 / 1500 * width;
+    fs2 = 50 / 1500 * width;
+    fs3 = 30 / 1500 * width;
+
+    // 设置字体大小
+    mfs1Els.forEach(el => {
+        el.setAttribute('style', 'font-size: ' + fs1 + 'px');
+    });
+    mfs2Els.forEach(el => {
+        el.setAttribute('style', 'font-size: ' + fs2 + 'px');
+    });
+    mfs3Els.forEach(el => {
+        el.setAttribute('style', 'font-size: ' + fs3 + 'px');
+    });
+
+    console.log('width: ' + width + ' fs1: ' + fs1 + ' fs2: ' + fs2 + ' fs3: ' + fs3);
+}
+
