@@ -6,7 +6,7 @@ function getTargetTime(){
 
     // 获取目标时间的日期
     var targetTime = new Date();
-    targetTime.setDate(targetTime.getDate() + (4 - targetTime.getDay()) % 7 + 1);
+    targetTime.setDate(targetTime.getDate() + (3 - targetTime.getDay()) % 7 + 1);
 
     if (now.getTime() > targetTime.getTime()) {
         targetTime.setDate(targetTime.getDate() + 7);
