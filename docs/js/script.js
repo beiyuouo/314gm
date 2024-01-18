@@ -65,14 +65,14 @@ function getTargetTime() {
         var targetTime = new Date();
         targetTime.setDate(targetTime.getDate() + (3 - targetTime.getDay()) % 7 + 1);
 
-        if (now.getTime() > targetTime.getTime()) {
-            targetTime.setDate(targetTime.getDate() + 7);
-        }
-
         targetTime.setHours(9);
         targetTime.setMinutes(30);
         targetTime.setSeconds(0);
         targetTime.setMilliseconds(0);
+
+        if (now.getTime() > targetTime.getTime()) {
+            targetTime.setDate(targetTime.getDate() + 7);
+        }
     }
     return targetTime;
 }
