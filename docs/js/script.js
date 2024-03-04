@@ -63,7 +63,7 @@ function getTargetTime() {
         }
     } else {
         var targetTime = new Date();
-        targetTime.setDate(targetTime.getDate() + (3 - targetTime.getDay()) % 7 + 1);
+        targetTime.setDate(targetTime.getDate() + (1 - targetTime.getDay()) % 7 + 1);
 
         targetTime.setHours(9);
         targetTime.setMinutes(30);
